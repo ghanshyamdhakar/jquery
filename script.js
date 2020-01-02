@@ -5,13 +5,14 @@ $(document).ready(function(){
 		var len=$("h2").length;
 		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
+		$('form')[0].reset();
 	});
 	$(".subheading-save").click(function(){
-		$(".select-heading").each(function(){
-			var ab=$(".select-heading").val();
-			var cd=$(".subheading-input").val();
-			$('h2:nth-child('+ab+')').append('<h6>'+cd+'<button onclick="removeElement(this)">X</button></h6>');
-		});
+		var ab=$(".select-heading").val();
+		var cd=$(".subheading-input").val();
+		$('h2:nth-child('+ab+')').append('<h6>'+cd+'<button onclick="removeElement(this)">X</button></h6>');
+		$('form')[1].reset();
+
 	});
 	$(".form-select-heading").change(function(){
 		var heading=$(this).val()
@@ -67,6 +68,7 @@ $(document).ready(function(){
 		else{
 			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').after('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
 		}
+		$('form')[2].reset();
 	});
 });
 function removeElement(thiss){
