@@ -28,7 +28,6 @@ $(document).ready(function(){
 	$(".form-save").click(function(){
 		var hcount=$(".form-select-heading").val();
 		var shcount=$('h2:nth-child('+hcount+') h6').length;
-		console.log(shcount);
 		var fh=$(".form-select-heading").val();
 		var fsh=parseInt($(".form-select-subheading").val());
 		var fst=$(".form-select-input").val();
@@ -41,9 +40,11 @@ $(document).ready(function(){
 		var disabled=$(".form-control-disabled").val();
 		var req=$(".form-control-required").val();
 		var read=$(".form-control-readonly").val();
+		// var check=$(".custom-control-input1:checked").length
+
 		fsh=fsh+1;
 		if (fst=='textarea') {
-			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><textarea placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><textarea placeholder="'+ph+'" class="'+clas+'" name="'+name+'" value="'+value+'">');
 		}
 		else if(fst=='select'){
 			var opts=options.split(',');
@@ -66,7 +67,28 @@ $(document).ready(function(){
 			});
 		}
 		else{
-			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').after('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
+		}
+		if ($(".disable-class").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr("disabled", "disabled");
+		}
+		if ($(".readonlyy-class").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr('readonly',true);
+		}
+		if ($(".required-classs").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr('required', true);
 		}
 		$('form')[2].reset();
 	});
