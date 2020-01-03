@@ -5,6 +5,7 @@ $(document).ready(function(){
 		var len=$("h2").length;
 		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
+		$('.form-heading')[0].reset();
 	});
 	$(".subheading-save").click(function(){
 		$(".select-heading").each(function(){
@@ -27,7 +28,6 @@ $(document).ready(function(){
 	$(".form-save").click(function(){
 		var hcount=$(".form-select-heading").val();
 		var shcount=$('h2:nth-child('+hcount+') h6').length;
-		console.log(shcount);
 		var fh=$(".form-select-heading").val();
 		var fsh=parseInt($(".form-select-subheading").val());
 		var fst=$(".form-select-input").val();
@@ -67,7 +67,11 @@ $(document).ready(function(){
 		else{
 			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').after('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
 		}
+		$('form')[0].reset();
 	});
+	// $(".form-class-reset").click(function(){
+	// 	$(this).tigger("reset");
+	// });
 });
 function removeElement(thiss){
 	$(thiss).parent().remove();
