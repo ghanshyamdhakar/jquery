@@ -5,14 +5,18 @@ $(document).ready(function(){
 		var len=$("h2").length;
 		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
+<<<<<<< HEAD
 		$('.form-heading')[0].reset();
+=======
+		$('form')[0].reset();
+>>>>>>> 24856fd3529cfa39c6cd15758cdbe8989963ec3a
 	});
 	$(".subheading-save").click(function(){
-		$(".select-heading").each(function(){
-			var ab=$(".select-heading").val();
-			var cd=$(".subheading-input").val();
-			$('h2:nth-child('+ab+')').append('<h6>'+cd+'<button onclick="removeElement(this)">X</button></h6>');
-		});
+		var ab=$(".select-heading").val();
+		var cd=$(".subheading-input").val();
+		$('h2:nth-child('+ab+')').append('<h6>'+cd+'<button onclick="removeElement(this)">X</button></h6>');
+		$('form')[1].reset();
+
 	});
 	$(".form-select-heading").change(function(){
 		var heading=$(this).val()
@@ -40,9 +44,11 @@ $(document).ready(function(){
 		var disabled=$(".form-control-disabled").val();
 		var req=$(".form-control-required").val();
 		var read=$(".form-control-readonly").val();
+		// var check=$(".custom-control-input1:checked").length
+
 		fsh=fsh+1;
 		if (fst=='textarea') {
-			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><textarea placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><textarea placeholder="'+ph+'" class="'+clas+'" name="'+name+'" value="'+value+'">');
 		}
 		else if(fst=='select'){
 			var opts=options.split(',');
@@ -65,9 +71,34 @@ $(document).ready(function(){
 			});
 		}
 		else{
-			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').after('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+')').append('<label>'+label+'</label><br><input type="'+fst+'" value="'+value+'" placeholder="'+ph+'" class="'+clas+'" name="'+name+'">');
 		}
+		if ($(".disable-class").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr("disabled", "disabled");
+		}
+		if ($(".readonlyy-class").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr('readonly',true);
+		}
+		if ($(".required-classs").is(':checked')){
+			var inpt=fst;
+			if(fst=='text' || fst== 'button' || fst=='radio' || fst=='email' || fst=='number' || fst=='image' || fst=='color' || fst=='password' || fst=='checkbox' || fst=='hidden' || fst=='search' || fst=='range' || fst=='submit' || fst=='reset' || fst=='url' || fst=='tel' || fst=='file'){
+				inpt='input';
+			}
+			$('h2:nth-child('+fh+') h6:nth-child('+fsh+') '+inpt+':last-child').attr('required', true);
+		}
+<<<<<<< HEAD
 		$('form')[0].reset();
+=======
+		$('form')[2].reset();
+>>>>>>> 24856fd3529cfa39c6cd15758cdbe8989963ec3a
 	});
 	// $(".form-class-reset").click(function(){
 	// 	$(this).tigger("reset");
