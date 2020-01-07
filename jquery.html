@@ -14,8 +14,6 @@
 		<div class="main-div">
 			<div class="main-div-first">
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Heading</button>
-				<section class="heading-class">
-				</section>
 			</div>
 			<div class="main-div-second">
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">sub-heading</button>
@@ -26,6 +24,9 @@
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal12" data-whatever="@mdo">form</button>
 			</div>
 		</div>
+
+		<main></main>
+
 		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -155,16 +156,16 @@
 								<textarea class="form-control form-control-options" id="exampleFormControlTextarea1" rows="3" placeholder="options"></textarea>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input disable-class" id="customControlValidation1">
+								<input type="checkbox" class="custom-control-input disable-class form-control-disabled" id="customControlValidation1">
 								<label class="custom-control-label" for="customControlValidation1">disabled</label>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input required-classs" id="customControlValidation2">
+								<input type="checkbox" class="custom-control-input required-classs form-control-required" id="customControlValidation2">
 								<label class="custom-control-label" for="customControlValidation2">required</label>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input readonlyy-class" id="customControlValidation3">
-								<label class="custom-control-label form-control-readonly" for="customControlValidation3">readonly</label>
+								<input type="checkbox" class="custom-control-input readonlyy-class form-control-readonly" id="customControlValidation3">
+								<label class="custom-control-label" for="customControlValidation3">readonly</label>
 							</div>
 						</form>
 					</div>
