@@ -108,11 +108,8 @@ $(document).ready(function(){
 		var ab=$(".select-heading").val();
 		var cd=$(".subheading-input").val();
 		$('main section:nth-child('+ab+')').append('<div><h6>'+cd+'<button onclick="removeElement(this)">X</button></h6></div>');
-		// console.log(doc[ab-1]);
 		doc[ab-1].subheading.push({'title':cd,'form':[]});
 		localStorage.setItem('formdata',JSON.stringify(doc));
-
-		// console.log(doc);
 		$('form')[1].reset();
 	});
 	$(".form-select-heading").change(function(){
@@ -232,5 +229,5 @@ $(document).ready(function(){
 	});
 });
 function removeElement(thiss){
-	$(thiss).parent().remove();
+	$(thiss).parent().parent().remove();
 }
