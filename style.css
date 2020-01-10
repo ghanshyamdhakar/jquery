@@ -1,48 +1,62 @@
 .main-div
-			{
-				width: 100%;
-				margin: auto;
-			}
-			.main-div-first
-			{
-				width: 33%;
-				float: left;
-			}
-			.main-div-second
-			{
-				width: 33%;
-				float: left;
-			}
-			.main-div-third
-			{
-				width: 33%;
-				float: left;
-			}
-			.sub-heading-class
-			{
-				width: 100%;
-				float: left;
-			}
-			.sub-heading-inner
-			{
-				width: 100%;
-				float: left;
-			}
-			.sub-heading-inner-two
-			{
-				width: 50%;
-				float: left;
-			}
-			.sub-heading-inner h6 
-			{
-				padding: 0px 0px 0px 22px;
-			}
-			.heading-class h2 h6 
-			{
-				padding-left: 20px;
-				padding-top: 10px;
-			}
-			.heading-class h2 
-			{
-				padding-left: 12px;
-			}
+{
+	width: 100%;
+	margin: auto;
+}
+.main-div-first
+{
+	width: 33%;
+	float: left;
+}
+.main-div-second
+{
+	width: 33%;
+	float: left;
+}
+.main-div-third
+{
+	width: 33%;
+	float: left;
+}
+.sub-heading-class
+{
+	width: 100%;
+	float: left;
+}
+.sub-heading-inner
+{
+	width: 100%;
+	float: left;
+}
+.sub-heading-inner-two
+{
+	width: 50%;
+	float: left;
+}
+.sub-heading-inner h6 
+{
+	padding: 0px 0px 0px 22px;
+}
+.heading-class h2 h6 
+{
+	padding-left: 20px;
+	padding-top: 10px;
+}
+.heading-class h2 
+{
+	padding-left: 12px;
+}
+.button-margin
+{
+	margin-left: 11px;	
+}
+.heading-cls
+{
+	padding-top: 10px;
+}
+.main-class
+{
+    width: 100%;
+    float: left;
+}
+

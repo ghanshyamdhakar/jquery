@@ -3,7 +3,9 @@ $(document).ready(function(){
 	if (localStorage.getItem('formdata')) {
 		doc=JSON.parse(localStorage.getItem('formdata'));
 		$(doc).each(function(ke,vl){
-			$("main").append('<section><h2>'+vl.title+'<button type="button" onclick="removeElement(this)">X</button></h2></section>');
+			$("main").append('<section><h2>'+vl.title+'<button type="button" onclick="removeElement(this)">X</button><button type="button">M</button></h2></section>');
+			$("main section h2 button:last-child").addClass("button-margin");
+			$("main section").parent().sortable();
 			$(".select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
 			$(".form-select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
 			$(vl.subheading).each(function(kes,vll){
@@ -94,20 +96,6 @@ $(document).ready(function(){
 	else{
 		doc=[];
 	}
-	// $(document).bind('keypress',function(e){
-	// 	if(e.which==13){
-	// 		$(".button-primary").trigger('click');
-	// 		return false;
-	// 	}
-		// else if(e.which==13){
-		// 	$(".subheading-save".trigger('click'));
-		// 	return false;
-		// }
-		// else{
-		// 	$(".form-save").trigger('click');
-		// 	return false;
-		// }
-	// });
 	$(".form-input").keypress(function(e){
 		if(e.which==13){
 			$(".button-primary").click();
@@ -116,23 +104,26 @@ $(document).ready(function(){
 	});
 	$(".button-primary").click(function(){
 		var abc=$('.form-input').val();
-		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button></h2></section>');
+		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button><button type="button">M</button><i class="fal fa-arrows"></i></h2></section>');
+		$("main section h2 button:last-child").addClass("button-margin");
+		$("main section h2").addClass("heading-cls");
+		$("main").addClass("main-class");
 		var len=$("main section").length;
+		$("main section").parent().sortable({
+			cancel:''
+		});
 		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
 		doc.push({'title':abc,'subheading':[]});
 		localStorage.setItem('formdata',JSON.stringify(doc));
 		$('form')[0].reset();
 	});
-	// $('.form-input').keypress(function(e){
-	// 	var abc=$('.form-input').val();
-	// 	var keycode=e.which;
-	// 	// console.log(keycode);
-	// 	if(e.which==13){
-	// 		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button></h2></section>');
-	// 		$(".submit-form").submit();
-	// 		return false;		
-	// 	}
+	// $("main section").sortable({
+	// 	handle:'button'
+	// });
+
+	// $(function(){
+	// 	$("main section").parent().sortable();
 	// });
 	$(".subheading-input").keypress(function(e){
 		if(e.which==13){
@@ -158,7 +149,7 @@ $(document).ready(function(){
 			$('.form-select-subheading').append('<option value="'+ab+'">'+curr_h+'</option>');
 		});
 	});
-	$(".form-save").keypress(function(e){
+	$("input").keypress(function(e){
 		if(e.which==13){
 			$(".form-save").click();
 			return false;
