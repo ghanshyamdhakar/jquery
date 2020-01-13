@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="main-div">
@@ -39,14 +40,14 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form class="form-heading">
+						<form class="form-heading" id="formFirstInput">
 							<div class="form-group">
 								<input type="text" class="form-control form-input" id="recipient-name">
 							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary button-primary">Save</button>
+							</div>
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary button-primary">Save</button>
 					</div>
 				</div>
 			</div>
@@ -61,7 +62,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form id="formSecondInput">
 							<div class="form-row align-items-center">
 								<div class="col-auto my-1">
 									<select class="select-heading custom-select mr-sm-2" d="inlineFormCustomSelect">
@@ -70,11 +71,12 @@
 								</div>
 							</div>
 							<input type="text" class="form-control subheading-input" id="recipient-name1" placeholder="subheading">
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary subheading-save">Save</button>
+							</div>
 						</form>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary subheading-save">Save</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -88,24 +90,24 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form class="form-class-reset">
+						<form class="form-class-reset form-cls-sub" id="formInputEnter">
 							<div class="form-row align-items-center">
 								<div class="col-auto my-1">
-									<select class="form-select-heading custom-select mr-sm-2" d="inlineFormCustomSelect">
+									<select class="form-select-heading custom-select form-inputs mr-sm-2" d="inlineFormCustomSelect">
 										<option class="select-option-class">select heading</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-row align-items-center">
 								<div class="col-auto my-1">
-									<select class="form-select-subheading custom-select mr-sm-2" id="inlineFormCustomSelect1">
+									<select class="form-select-subheading custom-select mr-sm-2 form-inputs" id="inlineFormCustomSelect1">
 										<option class="select-option-class">select sub-heading</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-row align-items-center">
 								<div class="col-auto my-1">
-									<select class="form-select-input custom-select mr-sm-2" id="inlineFormCustomSelect">
+									<select class="form-select-input custom-select mr-sm-2 form-inputs" id="inlineFormCustomSelect">
 										<option>select input type</option>
 										<option>text</option>
 										<option>button</option>
@@ -131,48 +133,48 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-								 <input type="text" class="form-control form-control-label" id="colFormLabel8" placeholder="label">
+								 <input type="text" class="form-control form-control-label form-inputs" id="colFormLabel8" placeholder="label">
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-								 <input type="text" class="form-control form-control-name" id="colFormLabel7" placeholder="name">
+								 <input type="text" class="form-control form-control-name form-inputs" id="colFormLabel7" placeholder="name">
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-								 <input type="text" class="form-control form-control-placeholder" id="colFormLabel2" placeholder="placeholder">
+								 <input type="text" class="form-control form-control-placeholder form-inputs" id="colFormLabel2" placeholder="placeholder">
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-								 <input type="text" class="form-control form-control-class" id="colFormLabel5" placeholder="class">
+								 <input type="text" class="form-control form-control-class form-inputs" id="colFormLabel5" placeholder="class">
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-10">
-								 <input type="text" class="form-control form-control-value" id="colFormLabel4" placeholder="value">
+								 <input type="text" class="form-control form-control-value form-inputs" id="colFormLabel4" placeholder="value">
 								</div>
 							</div>
 							<div class="form-group">
-								<textarea class="form-control form-control-options" id="exampleFormControlTextarea1" rows="3" placeholder="options"></textarea>
+								<textarea class="form-control form-control-options form-inputs" id="exampleFormControlTextarea1" rows="3" placeholder="options"></textarea>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input disable-class form-control-disabled" id="customControlValidation1">
+								<input type="checkbox" class="custom-control-input disable-class form-control-disabled form-inputs" id="customControlValidation1">
 								<label class="custom-control-label" for="customControlValidation1">disabled</label>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input required-classs form-control-required" id="customControlValidation2">
+								<input type="checkbox" class="custom-control-input required-classs form-control-required form-inputs" id="customControlValidation2">
 								<label class="custom-control-label" for="customControlValidation2">required</label>
 							</div>
 							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input readonlyy-class form-control-readonly" id="customControlValidation3">
+								<input type="checkbox" class="custom-control-input readonlyy-class form-control-readonly form-inputs" id="customControlValidation3">
 								<label class="custom-control-label" for="customControlValidation3">readonly</label>
 							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary form-save">Save</button>
+							</div>
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary form-save">Save</button>
 					</div>
 				</div>
 			</div>

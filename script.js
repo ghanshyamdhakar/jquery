@@ -3,8 +3,9 @@ $(document).ready(function(){
 	if (localStorage.getItem('formdata')) {
 		doc=JSON.parse(localStorage.getItem('formdata'));
 		$(doc).each(function(ke,vl){
-			$("main").append('<section><h2>'+vl.title+'<button type="button" onclick="removeElement(this)">X</button><button type="button">M</button></h2></section>');
+			$("main").append('<section><h2>'+vl.title+'<button type="button" onclick="removeElement(this)">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
 			$("main section h2 button:last-child").addClass("button-margin");
+			$("main").addClass("main-class");
 			$("main section").parent().sortable();
 			$(".select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
 			$(".form-select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
@@ -104,27 +105,20 @@ $(document).ready(function(){
 	});
 	$(".button-primary").click(function(){
 		var abc=$('.form-input').val();
-		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button><button type="button">M</button><i class="fal fa-arrows"></i></h2></section>');
-		$("main section h2 button:last-child").addClass("button-margin");
+		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
 		$("main section h2").addClass("heading-cls");
 		$("main").addClass("main-class");
 		var len=$("main section").length;
-		$("main section").parent().sortable({
-			cancel:''
-		});
+		$("main section").parent().sortable();
+		$("main section h2").each(function(seckey,secval){
+			console.log(seckey,secval);
+		})
 		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
 		doc.push({'title':abc,'subheading':[]});
 		localStorage.setItem('formdata',JSON.stringify(doc));
 		$('form')[0].reset();
 	});
-	// $("main section").sortable({
-	// 	handle:'button'
-	// });
-
-	// $(function(){
-	// 	$("main section").parent().sortable();
-	// });
 	$(".subheading-input").keypress(function(e){
 		if(e.which==13){
 			$(".subheading-save").click();
@@ -148,12 +142,6 @@ $(document).ready(function(){
 			ab=ab+1;
 			$('.form-select-subheading').append('<option value="'+ab+'">'+curr_h+'</option>');
 		});
-	});
-	$("input").keypress(function(e){
-		if(e.which==13){
-			$(".form-save").click();
-			return false;
-		}
 	});
 	$(".form-save").click(function(){
 		var hcount=$(".form-select-heading").val();
@@ -258,6 +246,9 @@ $(document).ready(function(){
 		}
 		doc[fh-1].subheading[fsh-2].form.push({'input':fst,'label':label,'name':name,'placeholder':ph,'class':clas,'value':value,'options':options,'disabled':disb,'required':reqd,'readonly':reado});
 		localStorage.setItem('formdata',JSON.stringify(doc));
+		$("#formInputEnter").submit(function(e){
+			e.preventDefault();
+		})
 		$('form')[2].reset();
 	});
 });
