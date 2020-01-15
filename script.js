@@ -3,10 +3,11 @@ $(document).ready(function(){
 	if (localStorage.getItem('formdata')) {
 		doc=JSON.parse(localStorage.getItem('formdata'));
 		$(doc).each(function(ke,vl){
-			$("main").append('<section><h2>'+vl.title+'<button type="button" onclick="removeElement(this)">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
+			$("main").append('<section><h2>'+vl.title+'<button type="button" class="rmoveitm" onclick="removeElement(this,'+ke+')">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
 			$("main section h2 button:last-child").addClass("button-margin");
 			$("main").addClass("main-class");
 			$("main section").parent().sortable();
+			$("main section")
 			$(".select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
 			$(".form-select-heading").append('<option value="'+(ke+1)+'">'+vl.title+'</option>');
 			$(vl.subheading).each(function(kes,vll){
@@ -97,33 +98,27 @@ $(document).ready(function(){
 	else{
 		doc=[];
 	}
-	$(".form-input").keypress(function(e){
-		if(e.which==13){
-			$(".button-primary").click();
-			return false;
-		}
-	});
 	$(".button-primary").click(function(){
 		var abc=$('.form-input').val();
-		$("main").append('<section><h2>'+abc+'<button type="button" onclick="removeElement(this)">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
+		$("main").append('<section><h2>'+abc+'<button type="button" class="rmoveitm" onclick="removeElement(this)">X</button><i class="fa fa-arrows" style="font-size:36px"></i></h2></section>');
 		$("main section h2").addClass("heading-cls");
 		$("main").addClass("main-class");
 		var len=$("main section").length;
 		$("main section").parent().sortable();
-		$("main section h2").each(function(seckey,secval){
-			console.log(seckey,secval);
+		$(".select-heading option").remove();
+		$(".select-heading").append('<option value="">Select Heading</option>');
+		$("main section h2").each(function(seckey){
+			var headt=$(this).text().replace("X",'');
+			seckey=seckey+1;
+			$(".select-heading").append($("<option value="+seckey+">").text(headt));
 		})
-		$(".select-heading").append($("<option value="+len+">").text(abc));
 		$(".form-select-heading").append($("<option value="+len+">").text(abc));
 		doc.push({'title':abc,'subheading':[]});
 		localStorage.setItem('formdata',JSON.stringify(doc));
+		$("#formFirstInput").submit(function(e){
+			e.preventDefault();
+		});
 		$('form')[0].reset();
-	});
-	$(".subheading-input").keypress(function(e){
-		if(e.which==13){
-			$(".subheading-save").click();
-			return false;
-		}
 	});
 	$(".subheading-save").click(function(){
 		var ab=$(".select-heading").val();
@@ -131,6 +126,9 @@ $(document).ready(function(){
 		$('main section:nth-child('+ab+')').append('<div><h6>'+cd+'<button onclick="removeElement(this)">X</button></h6></div>');
 		doc[ab-1].subheading.push({'title':cd,'form':[]});
 		localStorage.setItem('formdata',JSON.stringify(doc));
+		$("#formSecondInput").submit(function(e){
+			e.preventDefault();
+		});
 		$('form')[1].reset();
 	});
 	$(".form-select-heading").change(function(){
@@ -248,10 +246,21 @@ $(document).ready(function(){
 		localStorage.setItem('formdata',JSON.stringify(doc));
 		$("#formInputEnter").submit(function(e){
 			e.preventDefault();
-		})
+		});
 		$('form')[2].reset();
 	});
 });
-function removeElement(thiss){
-	$(thiss).parent().parent().remove();
+function removeElement(thiss,ke){
+	$(thiss).parent().parent().remove()
+	var stored = JSON.parse(localStorage.getItem('formdata'));
+	for (var i = 0; i < stored.length -1; i++) {
+		if(stored[i]==ke){
+			stored[i].splice(0,ke);
+		}
+	}
+	// var dt=$(storedNames).splice(-1,ke);
+	console.log(stored);
+	// console.log(storedNames);
+	// localStorage.setItem('formdata',JSON.stringify(dt));
+
 }
